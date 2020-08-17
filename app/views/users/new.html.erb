@@ -1,0 +1,40 @@
+<h1> Create New User </h1>
+<hr>
+
+<% if flash[:errors] %>
+  <% flash[:errors].keys.each do |key| %>
+    <h4 style="color: red;"> Error: <%= "#{key} #{flash[:errors][key][0]}" %> </h4>
+  <% end %>
+<% end %>
+
+<!--<% if flash[:errors] %>
+    <h4 style="color: red;">
+      Alert: <%= flash[:errors] %>
+    </h4>
+<% end %>
+-->
+
+
+<%= form_for @user do |f| %>
+    <label>Username: </label>
+    <%= f.text_field :username %><br><br>
+    <label>Password: </label>
+    <%= f.text_field :password %><br><br>
+    <label>Password Confirmation: </label>
+    <%= password_field_tag :password_confirmation%><br><br>
+    <label>Email Address: </label>
+    <%= f.text_field :email %><br><br>
+    <label>Age: </label>
+    <%= f.text_field :age %><br><br>
+
+    <%= f.submit %>
+
+<% end %>
+
+
+<!--<% @user.errors.full_messages.each do |m| %>
+    <p><%= m %></p>
+<% end %>
+-->
+
+

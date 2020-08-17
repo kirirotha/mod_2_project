@@ -1,0 +1,7 @@
+<h1> <%=@item.name%> </h1>
+<hr> 
+Category: <%= @item.category.name %><br><br>
+Description: <%= @item.des %><br>
+
+<hr>
+<%= link_to "Back to Item Index", items_path %>

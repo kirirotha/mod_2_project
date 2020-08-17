@@ -1,0 +1,7 @@
+<h1> <%=@user.username%> </h1>
+<hr> 
+Age: <%= @user.age %><br>
+Email Address: <%= @user.email %>
+Password: <%= @user.password %>
+<hr>
+<%= link_to "Back to User Index", users_path %>
