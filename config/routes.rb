@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users, only: [:index, :show, :new, :create]
+  resources :orders
+  resources :ordered_items
+  resources :users, only: [:index, :show, :new, :create, :edit, :update]
   resources :comments, only: [:show]
   resources :shopping_carts, only: [:show]
   resources :selected_items, only: [:show, :index, :create, :update, :destroy]

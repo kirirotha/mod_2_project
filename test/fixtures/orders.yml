@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  shopping_cart_id: 1
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  cc: MyString
+  ccexp: MyString
+
+two:
+  user_id: 1
+  shopping_cart_id: 1
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  cc: MyString
+  ccexp: MyString

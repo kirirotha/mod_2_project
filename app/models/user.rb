@@ -1,6 +1,6 @@
 class User < ApplicationRecord
     has_many :shopping_carts
-    has_many :selected_items, through: :selected_carts
+    has_many :selected_items, through: :shopping_carts
     has_many :comments
 
     has_secure_password

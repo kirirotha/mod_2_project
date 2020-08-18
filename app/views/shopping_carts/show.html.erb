@@ -1,10 +1,16 @@
 <h1>Your Cart</h1>
 <hr>
 <% @cart_items.each do |cart_item| %>
-    <%=  "#{cart_item.quantity}   #{cart_item.item.name} "%><br>
-    <%= "$ #{cart_item.item.price}  each" %>
+    <%=  "#{cart_item.item.name} "%><br>
+    <%= "$ #{cart_item.item.price}  each" %><br>
+    <%= "Quantity: #{cart_item.quantity}" %>   
+
     <%= button_to "delete", {:controller => :selected_items, :action => 'destroy', :id => cart_item.id }, :method => :delete %><br><br>
 <% end %>
+<h3> <%= "Total: $ #{@cart.total}" %><h3>
+
+
+<hr>
 
 <%= link_to "Return to All Items", items_path %><br><br>
 

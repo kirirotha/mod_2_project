@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_17_213819) do
+ActiveRecord::Schema.define(version: 2020_08_18_215703) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -39,19 +39,40 @@ ActiveRecord::Schema.define(version: 2020_08_17_213819) do
     t.string "category_id"
   end
 
+  create_table "ordered_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "selected_item_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "shopping_cart_id"
+    t.string "name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "cc"
+    t.string "ccexp"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "selected_items", force: :cascade do |t|
     t.integer "shopping_cart_id"
     t.integer "item_id"
-    t.integer "quantity",  default: 0
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shopping_carts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "total",  default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "total"
   end
 
   create_table "users", force: :cascade do |t|

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     def show
         set_user
+        
     end
 
     def new
@@ -36,10 +37,9 @@ class UsersController < ApplicationController
             redirect_to user_path(@user)
         else
             flash[:errors] = @user.errors.messages
-            redirect_to new_user_path
+            redirect_to edit_user_path
         end
-        set_user
-        redirect_to user_path(@user)
+        
     end
 
     private

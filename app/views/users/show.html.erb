@@ -2,6 +2,14 @@
 <hr> 
 Age: <%= @user.age %><br>
 Email Address: <%= @user.email %>
-Password: <%= @user.password %>
+Password: ********
 <hr>
+
+<% @user.shopping_carts.each do |order| %>
+    <p><%= order.total %></p>    
+<% end %>
+<br>
+
 <%= link_to "Back to User Index", users_path %>
+<br>
+<%= link_to 'Edit My Profile', edit_user_path %>
