@@ -42,14 +42,14 @@ ActiveRecord::Schema.define(version: 2020_08_17_213819) do
   create_table "selected_items", force: :cascade do |t|
     t.integer "shopping_cart_id"
     t.integer "item_id"
-    t.integer "quantity"
+    t.integer "quantity",  default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "shopping_carts", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "total"
+    t.integer "total",  default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

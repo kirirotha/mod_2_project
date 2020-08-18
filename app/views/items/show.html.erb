@@ -1,7 +1,14 @@
 <h1> <%=@item.name%> </h1>
 <hr> 
+<img src=<%=@item.image_url%> alt=<%=@item.name%> style=height:200px;"><br><br>
 Category: <%= @item.category.name %><br><br>
-Description: <%= @item.des %><br>
+Price: <%= @item.price.to_s %><br><br>
+Description: <%= @item.des %><br><br>
 
+<%= form_for @item, :url => selected_items_path, :html => { :method => :post } do |f|%>
+    <%= f.hidden_field :item_id, value: @item.id %>
+      <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
+    <%= f.submit 'Add to Cart', class: "btn btn-success" %>
+    <% end %>
 <hr>
 <%= link_to "Back to Item Index", items_path %>

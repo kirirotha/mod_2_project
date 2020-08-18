@@ -10,10 +10,12 @@ before_action :set_item, only:[:show, :edit, :update, :destroy]
 
     def new
         @item = Item.new
+        @cat = Category.all
     end
 
     def create
         @item = Item.new(post_params)
+        @cat = Category.all
         @item.save
         redirect_to item_path(@item)
     end
@@ -25,7 +27,7 @@ before_action :set_item, only:[:show, :edit, :update, :destroy]
     end
 
     def post_params
-        params.require(:item).permit(:name, :des, :image_url, :category_id)
+        params.require(:item).permit(:name, :des, :image_url, :category_id,:price)
     end
 
     
