@@ -7,13 +7,13 @@
 <% end %>
 
 <%= form_with url: '/login', method: :post do |f| %>
-
   <%= f.label :email %>
   <%= f.text_field :"login[email]" %>
-
+  <br><br>
   <%= f.label :password %>
   <%= f.text_field :"login[password]" %>
-
+  <br><br>
   <%= f.submit "Login" %>
-
 <% end %>
+
+<p>Don't have an account? <%= link_to 'Click Here!', new_user_path %></p>
