@@ -9,7 +9,12 @@ class ShoppingCartsController < ApplicationController
     def show 
         @cart = ShoppingCart.find(session[:shopping_cart_id])
         @total = total
-        @cart.save
+        if @cart.valid?
+            @cart.save
+        else
+            flash[:errors] = @cart.errors.messages
+            
+        end
     end
 
     private

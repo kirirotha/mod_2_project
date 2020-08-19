@@ -1,20 +1,29 @@
 class OrdersController < ApplicationController
 
     def new
-        @cart = ShoppingCart.find(session[:shopping_cart_id])
-        if @cart.selected_items.empty?
-            flash[:message] = "Your cart is empty"
-            redirect_to shopping_cart_path(session[:shopping_cart_id])
+        if session[:user_id] == nil
+            redirect_to login_path
+        else
+            @cart = ShoppingCart.find(session[:shopping_cart_id])
+            # if @cart.selected_items.empty?
+            #     flash[:message] = "Your cart is empty"
+            #     redirect_to shopping_cart_path(session[:shopping_cart_id])
         end
-        @order = Order.new
+            @order = Order.new
+
     end
 
     def create
         params
         @order = Order.new(order_params)
+        if @order.valid?
         @order.save
+        redirect_to order_path(@order)
+        else
         session[:shopping_cart_id] = nil
-        redirect_to order_path(@order[:id])
+        flash[:errors] = @order.errors.messages
+        redirect_to new_order_path
+        end
     end
 
     def show 
@@ -27,11 +36,10 @@ class OrdersController < ApplicationController
     end
 
     private
+
     def order_params
         params.require(:order).permit(:name, :address, :city, :state, :zip, :cc, :ccexp, :user_id, :shopping_cart_id)
     end
-
-    private
 
     def cart_items
         @cart_items = SelectedItem.all.select do |select_item| 

@@ -8,11 +8,16 @@
 
     <%= button_to "delete", {:controller => :selected_items, :action => 'destroy', :id => cart_item.id }, :method => :delete %><br><br>
 <% end %>
+<% if @cart_items.length > 0 %>
 <h3> <%= "Total: #{number_to_currency(@total)}" %><h3>
-<%= button_to "Complete Order", new_order_path, :id => "open-contacts-dialog-btn",
-      :class => "inbox-sf-add-btn tip", :method => :get %>
+    <%= button_to "Complete Order", new_order_path, :id => "open-contacts-dialog-btn",
+        :class => "inbox-sf-add-btn tip", :method => :get %>
+<% else %>
+    <h4>Empty!</h4>
+<% end %>
+
 <hr>
 
-<%= link_to "Continue Shopping", items_path %><br><br>
+<%= link_to "Continue Shopping", categories_path %><br><br>
 
 
