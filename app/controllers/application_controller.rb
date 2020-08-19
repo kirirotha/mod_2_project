@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
     #helper_method :current_cart
     helper_method :current_user
 
+    def index
+    end
+
     def current_user
       if !session[:user_id].nil? && !session[:user_id] != ""
         @user = User.find_by(id: session[:user_id])
@@ -12,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
 
     def logged_in?
-        !!current_author
+        !!current_user
     end
 
 
@@ -38,8 +41,6 @@ class ApplicationController < ActionController::Base
     def cart_count
       cart_items = SelectedItem.select{|item|  item.shopping_cart_id == session[:shopping_cart_id]}
       @cart_count = cart_items.map{|item| item.quantity}.sum
-
-
     end
     # def current_cart
     #     if !session[:cart_id].nil?

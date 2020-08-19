@@ -10,11 +10,15 @@ class OrdersController < ApplicationController
     end
 
     def create
-        params
         @order = Order.new(order_params)
-        @order.save
-        session[:shopping_cart_id] = nil
-        redirect_to order_path(@order[:id])
+        if @order.valid?
+            @order.save
+            session[:shopping_cart_id] = nil
+            redirect_to order_path(@order)
+        else
+            flash[:errors] = @order.errors.messages
+            redirect_to new_order_path
+        end
     end
 
     def show 

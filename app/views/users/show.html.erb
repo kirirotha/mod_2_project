@@ -5,9 +5,7 @@ Email Address: <%= @user.email %>
 Password: ********
 <hr>
 
-<% @user.shopping_carts.each do |order| %>
-    <p><%= order.total %></p>    
-<% end %>
+
 <br>
 
 <%= link_to "Back to User Index", users_path %>
