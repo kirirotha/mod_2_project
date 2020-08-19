@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only:[:show, :edit, :update, :destroy]
     before_action :set_cart
-
+    before_action :cart_count
 
     def index
         @categories = Category.all

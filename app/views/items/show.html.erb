@@ -1,5 +1,9 @@
 <h1> <%=@item.name%> </h1>
+<% if @cart_count %>
+    <%= link_to "Cart: #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
+<% end %>
 <hr> 
+
 <img src=<%=@item.image_url%> alt=<%=@item.name%> style=height:200px;"><br><br>
 Category: <%= @item.category.name %><br><br>
 Price: <%= @item.price.to_s %><br><br>
@@ -11,4 +15,7 @@ Description: <%= @item.des %><br><br>
     <%= f.submit 'Add to Cart', class: "btn btn-success" %>
     <% end %>
 <hr>
-<%= link_to "Back to Item Index", items_path %>
+
+<%= link_to "Go Back", category_path(@item.category_id) %>
+<br>
+<%= link_to "All Categories", categories_path %>

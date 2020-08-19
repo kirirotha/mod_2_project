@@ -1,5 +1,9 @@
 <h1>All Items in <%=@category.name%> </h1>
+<% if @cart_count %>
+    <%= link_to "Cart: #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
+<% end %>
 <hr> 
+
 <%  @category.items.each do |item| %>
     <div class="card">
         <img src="<%=item.image_url%>" alt="<%item.name%>" style="height:50px">
@@ -9,4 +13,4 @@
     </div>
 <% end %>
 <hr>
-<%= link_to "Back to Category Index", categories_path %>
+<%= link_to "Go Back", categories_path %>
