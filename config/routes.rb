@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :orders
+  resources :orders,only: [:new, :show, :create]
   resources :ordered_items
   resources :users, only: [:index, :show, :new, :create, :edit, :update]
   resources :comments, only: [:show]

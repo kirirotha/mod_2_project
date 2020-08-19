@@ -1,17 +1,18 @@
 <h1>Your Cart</h1>
 <hr>
 <% @cart_items.each do |cart_item| %>
+    <img src="<%=cart_item.item.image_url%>" alt="<%cart_item.item.name%>" style="height:50px"><br>
     <%=  "#{cart_item.item.name} "%><br>
-    <%= "$ #{cart_item.item.price}  each" %><br>
+    <%= "#{number_to_currency(cart_item.item.price)}  each" %><br>
     <%= "Quantity: #{cart_item.quantity}" %>   
 
     <%= button_to "delete", {:controller => :selected_items, :action => 'destroy', :id => cart_item.id }, :method => :delete %><br><br>
 <% end %>
-<h3> <%= "Total: $ #{@cart.total}" %><h3>
-
-
+<h3> <%= "Total: #{number_to_currency(@total)}" %><h3>
+<%= button_to "Complete Order", new_order_path, :id => "open-contacts-dialog-btn",
+      :class => "inbox-sf-add-btn tip", :method => :get %>
 <hr>
 
-<%= link_to "Return to All Items", items_path %><br><br>
+<%= link_to "Continue Shopping", items_path %><br><br>
 
 

@@ -1,7 +1,12 @@
 <h1>All Items in <%=@category.name%> </h1>
 <hr> 
 <%  @category.items.each do |item| %>
-    <%= link_to item.name, item_path(item) %><br><br>
+    <div class="card">
+        <img src="<%=item.image_url%>" alt="<%item.name%>" style="height:50px">
+        <div class="container">
+            <%= link_to item.name, item_path(item) %> <br><br>
+        </div>
+    </div>
 <% end %>
 <hr>
 <%= link_to "Back to Category Index", categories_path %>

@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
-    # before_action :set_cart
-    # helper_method :current_cart
+    before_action :set_cart
+    #helper_method :current_cart
     helper_method :current_user
 
     def current_user
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
     def logged_in?
         !!current_author
-      end
+    end
 
 
     private
@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
     def set_cart
         @cart = ShoppingCart.find(session[:shopping_cart_id])
         rescue ActiveRecord::RecordNotFound
-        @cart = ShoppingCart.create(user_id: session[:user_id])
-        session[:shopping_cart_id] = @cart.user_id
+        @cart = ShoppingCart.create
+        session[:shopping_cart_id] = @cart.id
     end
 
     def authorized
@@ -35,6 +35,12 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def cart_count
+      cart_items = SelectedItem.select{|item|  item.shopping_cart_id == session[:shopping_cart_id]}
+      @cart_count = cart_items.map{|item| item.quantity}.sum
+
+
+    end
     # def current_cart
     #     if !session[:cart_id].nil?
     #       Cart.find(session[:cart_id])

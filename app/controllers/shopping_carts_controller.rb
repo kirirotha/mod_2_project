@@ -1,12 +1,14 @@
 class ShoppingCartsController < ApplicationController
     before_action :cart_items, only: [:show]
+    before_action :set_cart
+    before_action :cart_count
 
     def index
     end
   
     def show 
         @cart = ShoppingCart.find(session[:shopping_cart_id])
-        @cart.total = total
+        @total = total
         @cart.save
     end
 
@@ -21,7 +23,7 @@ class ShoppingCartsController < ApplicationController
     def total
         total = 0
         @cart_items.each do |item|
-            total += (item.item.price*item.quantity)
+            total += ((item.item.price || 0)*(item.quantity || 0))
         end
         total.round(2)
     end

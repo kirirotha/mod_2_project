@@ -1,11 +1,15 @@
 class ItemsController < ApplicationController
 before_action :set_item, only:[:show, :edit, :update, :destroy]
+before_action :set_cart
+before_action :cart_count
+
 
     def index
         @items = Item.all
     end
 
     def show
+        
     end
 
     def new

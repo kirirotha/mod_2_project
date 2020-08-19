@@ -4,7 +4,7 @@
     <label>Item Name: </label>
     <%= f.text_field :name %><br><br>
     <label>Item Price: </label>
-    <%= f.number_field :price %><br><br>
+    <%= f.number_field :price, step: 0.01 %><br><br>
     <label>Category: </label>
     <%= f.collection_select(:category_id, @cat, :id, :name) %><br>
     <%= link_to "Create New Category", new_category_path %><br><br>

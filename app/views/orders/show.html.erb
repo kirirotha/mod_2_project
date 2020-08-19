@@ -1,0 +1,27 @@
+<h1> Thank You! </h1>
+<hr>
+<h3>Your Order Has Been Completed </h3>
+
+<p> Deliver To: </p>
+<%= @order.name %><br>
+<%= @order.address %><br>
+<%="#{@order.city}, #{@order.state} #{@order.zip}" %> <br><br>
+
+<p> Items Ordered: </p>
+
+<% @cart_items.each do |cart_item| %>
+    <img src="<%=cart_item.item.image_url%>" alt="<%cart_item.item.name%>" style="height:50px"><br>
+    <%=  "#{cart_item.item.name} "%><br>
+    <%= "#{number_to_currency(cart_item.item.price)}  each" %><br>
+    <%= "Quantity: #{cart_item.quantity}" %> <br><br>  
+<% end %>
+<br>
+<h3> <%= "Total: #{number_to_currency(@total)}" %><h3>
+<hr>
+
+<%= link_to "Return to All Items", items_path %>
+
+
+
+
+

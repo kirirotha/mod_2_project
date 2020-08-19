@@ -1,0 +1,29 @@
+<h1>Order Information </h1>
+<hr>
+
+<%= form_for @order do |f| %>
+    <label> Name on Order: </label>
+    <%= f.text_field :name %><br><br>
+    <label> Delivery Address: </label>
+    <%= f.text_field :address %><br><br>
+    <label> City: </label>
+    <%= f.text_field :city %><br><br>
+    <label> State: </label>
+    <%= f.text_field :state %><br><br>
+    <label> Zip Code: </label>
+    <%= f.text_field :zip %><br><br>
+    <label> Credit Card Number: </label>
+    <%= f.text_field :cc %><br><br>
+    <label> Expiration Date: </label>
+    <%= f.text_field :ccexp %><br><br>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :shopping_cart_id, value: session[:shopping_cart_id] %>
+
+    <%= f.submit %>
+<% end %>
+
+<hr>
+<%= link_to "Return to Shopping Cart", shopping_cart_path(session[:shopping_cart_id]) %>
+
+

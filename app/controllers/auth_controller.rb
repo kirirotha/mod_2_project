@@ -1,4 +1,6 @@
 class AuthController < ApplicationController
+  before_action :set_cart
+
 
     def login
         render :login
