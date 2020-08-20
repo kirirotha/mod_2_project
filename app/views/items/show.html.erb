@@ -2,6 +2,14 @@
 <% if @cart_count %>
     <%= link_to "Cart: #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
 <% end %>
+<br>
+<% if session[:user_id] == nil %>
+    <%= link_to 'Sign Up/Login', login_path%>
+    <% else %>
+    <%= link_to 'My Profile', user_path(session[:user_id]) %>
+    <br>
+    <%= link_to "Logout", logout_path %>
+<% end %>
 <hr> 
 
 <img src=<%=@item.image_url%> alt=<%=@item.name%> style=height:200px;"><br><br>

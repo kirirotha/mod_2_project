@@ -11,7 +11,7 @@ class AuthController < ApplicationController
     
         if @user && @user.authenticate(login_params[:password])
           session[:user_id] = @user.id
-          redirect_to categories_path
+          redirect_to root_path
         else
           flash[:error] = 'Login failed..'
           redirect_to login_path
@@ -20,7 +20,7 @@ class AuthController < ApplicationController
     
       def logout
         session[:user_id] = nil
-        redirect_to login_path
+        redirect_to root_path
       end
     
       private

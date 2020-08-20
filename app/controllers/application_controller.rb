@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
+    before_action :all_categories
+
+
     before_action :set_cart
     #helper_method :current_cart
     helper_method :current_user
+
+    def index
+    end
 
     def current_user
       if !session[:user_id].nil? && !session[:user_id] != ""
@@ -17,6 +23,10 @@ class ApplicationController < ActionController::Base
 
 
     private
+
+    def all_categories
+      @categories = Category.all
+    end
     
 
     def set_cart
@@ -38,8 +48,6 @@ class ApplicationController < ActionController::Base
     def cart_count
       cart_items = SelectedItem.select{|item|  item.shopping_cart_id == session[:shopping_cart_id]}
       @cart_count = cart_items.map{|item| item.quantity}.sum
-
-
     end
     # def current_cart
     #     if !session[:cart_id].nil?

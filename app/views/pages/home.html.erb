@@ -1,0 +1,14 @@
+
+<br>
+
+<h3>Best Selling Items</h3>
+<% @best_sellers.each do |item| %>
+    <img src="<%=item.image_url%>" alt="<%item.name%>" style="height:50px">
+    <%= link_to item.name, item_path(item) %>
+    <br><br>
+<% end %>
+<br><br>
+
+<h3>$$$Add Search Item Option </h3><br>
+
+

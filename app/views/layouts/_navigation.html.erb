@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark sticky-top expand-lg">
+    <div class="container">
+        
+        <h1> <%= link_to "Joe and Kiri's Store", root_path, class: 'navbar-brand' %> </h1>
+        <div class>
+            <ul class="nav navbar-nav mr-auto">
+            <li class='nav-item'>
+            <div class="dropdown">
+                <button class="dropbtn">Categories
+                <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                <% @categories.each do |category| %>
+                    <%= link_to category.name, category_path(category) %>
+                <% end %>
+                </div>
+            </li>
+            <li>
+            <% if @cart_count %>
+                <%= link_to "&#xf07a; #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
+            <% end %>
+
+            </li>
+            </ul>
+        
+
+        <% if session[:user_id] %>
+            <%= "Logged in as #{current_user.username}" %><br>
+            <%= link_to "- Logout? -", logout_path%>
+        <% else %>
+            <%= link_to "Click Here to Login ", login_path %><br>
+            or <%= link_to "Create New Account", new_user_path %>
+        <% end %>
+        </div>
+    </div>
+</nav>

@@ -14,15 +14,14 @@ class OrdersController < ApplicationController
     end
 
     def create
-        params
         @order = Order.new(order_params)
         if @order.valid?
-        @order.save
-        redirect_to order_path(@order)
-        session[:shopping_cart_id] = nil
+            @order.save
+            session[:shopping_cart_id] = nil
+            redirect_to order_path(@order)
         else
-        flash[:errors] = @order.errors.messages
-        redirect_to new_order_path
+            flash[:errors] = @order.errors.messages
+            redirect_to new_order_path
         end
     end
 
