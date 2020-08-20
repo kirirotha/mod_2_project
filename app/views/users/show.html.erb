@@ -1,12 +1,10 @@
 <h1> Welcome <%= @user.username%>! </h1>
 <hr> 
-Age: <%= @user.age %><br>
-Email Address: <%= @user.email %>
-Password: ********
-<hr>
 <% @order.shopping_cart.selected_items.each do |order|%>
-
+<% byebug %>
+    <img src=<%=Item.all.find(order.item_id).image_url%> style=height:100px;">
     <%= Item.all.find(order.item_id).name %>
+    <%= Item.all.find(order.item_id).price %>
 <% end %>
 <hr>
 

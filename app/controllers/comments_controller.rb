@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
     end
 
     def create
-        @comment = Comment.create(content: params[:comment][:content], item_id: params[:id])
-        redirect_to 'items/#{params[:id]}'
+       
     end
 
     # private
