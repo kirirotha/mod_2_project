@@ -1,12 +1,16 @@
+
+
+
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <nav class="navbar navbar-dark sticky-top expand-lg">
     <div class="container">
         
-        <h1> <%= link_to "Joe and Kiri's Store", root_path, class: 'navbar-brand' %> </h1>
+        <h1> <%= link_to "JOE AND KIRI'S STORE", root_path, class: 'navbar-brand', style: 'font-size: 30px; padding:8px '%> </h1>
         <div class>
-            <ul class="nav navbar-nav mr-auto">
-            <li class='nav-item'>
+            <ul class="nav navbar-nav mr-auto" >
+            <li class='nav-item' style='padding-left: 120px'>
             <div class="dropdown">
-                <button class="dropbtn">Categories
+                <button class="dropbtn" >CATEGORIES
                 <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
@@ -16,20 +20,28 @@
                 </div>
             </li>
             <li>
-            <% if @cart_count %>
-                <%= link_to "&#xf07a; #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
+            <% if session[:user_id] %>
+                <%= link_to "PROFILE", user_path(session[:user_id])%>
+            
             <% end %>
-
+            </li>
+            <li>
+                <% if @cart_count %>
+                <i class="fas fa-shopping-cart" style='font-size:18px; padding:14px; padding-left: 50px'>
+                    <%= link_to " #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]), style: 'padding-right: 50px ' %></i><br>
+                <% else %>
+                <i class="fas fa-shopping-cart" style='font-size:18px; padding:14px'>
+                <%= link_to " 0 items", shopping_cart_path(session[:shopping_cart_id]), style: 'padding-right: 50px ' %></i><br>                <% end %>
             </li>
             </ul>
         
 
         <% if session[:user_id] %>
-            <%= "Logged in as #{current_user.username}" %><br>
+            <label><%= "Logged in as #{current_user.username}" %></label> <br>
             <%= link_to "- Logout? -", logout_path%>
         <% else %>
             <%= link_to "Click Here to Login ", login_path %><br>
-            or <%= link_to "Create New Account", new_user_path %>
+            <%= link_to "or Create New Account", new_user_path %>
         <% end %>
         </div>
     </div>

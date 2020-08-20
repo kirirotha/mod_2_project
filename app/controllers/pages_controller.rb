@@ -15,9 +15,7 @@ class PagesController < ApplicationController
     private
 
 
-    def best_sellers
-        @high_numbers = [0,0,0,0,0]
-        
+    def best_sellers        
         items_count = Item.all.map do |i|
             item_count = 0
             Order.all.each do |o|
@@ -27,7 +25,7 @@ class PagesController < ApplicationController
             end
             [i.id, item_count]
         end
-        sorted = items_count.sort_by{ |i| i[1]}.reverse![0..4]
+        sorted = items_count.sort_by{ |i| i[1]}.reverse![0..2]
         @best_sellers = sorted.map{|s| Item.find(s[0])}
         
     end

@@ -1,14 +1,28 @@
 
 <br>
 
-<h3>Best Selling Items</h3>
-<% @best_sellers.each do |item| %>
-    <img src="<%=item.image_url%>" alt="<%item.name%>" style="height:50px">
-    <%= link_to item.name, item_path(item) %>
-    <br><br>
-<% end %>
-<br><br>
+<h1> *****Put an image or Logo here ****</h1>
 
-<h3>$$$Add Search Item Option </h3><br>
+<section id="services" class="services">
+      <div class="container">
 
+        <div class="section-title">
+          <span>Most Wanted</span><br>
+          <p>Our Top 3 Best Sellers:</p>
+        </div>
+
+        <div class="row">
+            <% @best_sellers.each do |item| %>
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="icon-box">
+                    <img src="<%=item.image_url%>" alt="<%item.name%>" style="height:100px">
+                    <h4><%= link_to item.name, item_path(item) %>
+                    </h4>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+      </div>
+    </section>
 

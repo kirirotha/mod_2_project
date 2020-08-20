@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :all_categories
-
-
+    before_action :cart_count
     before_action :set_cart
     #helper_method :current_cart
     helper_method :current_user
