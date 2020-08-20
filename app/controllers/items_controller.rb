@@ -1,27 +1,17 @@
 class ItemsController < ApplicationController
-before_action :set_item, only:[:show, :edit, :update, :destroy]
+before_action :set_item, only:[:show, :create, :new]
 before_action :set_cart
 before_action :cart_count
 
 
-    def index
-        @items = Item.all
-    end
-
     def show
-        
-        if session[:user_id] == nil
-            redirect_to login_path
-        else
-            @comment = Comment.new
-        end
-        @comment
+        set_item
+        @comment = Comment.new
     end
 
     def new
-        @item = Item.new
-        @cat = Category.all
-
+        set_item
+        @comment = Comment.new
         # if session[:user_id] == nil
         #     redirect_to login_path
         # else
@@ -31,10 +21,23 @@ before_action :cart_count
     end
 
     def create
-        @item = Item.new(post_params)
-        @cat = Category.all
-        @item.save
-        redirect_to item_path(@item)
+        # @item = Item.new(post_params)
+        # @cat = Category.all
+        # @item.save
+        # redirect_to item_path(@item)
+        #@item = Item.find(params[:id])
+        @comment = Comment.new
+        if session[:user_id] == nil
+            redirect_to login_path
+        elsif @comment.valid?
+            @comment = Comment.create(content: params[:comment][:title][:content][:rating], item_id: params[:id])
+            redirect_to 'items/#{params[:id]}'
+        else
+            byebug
+            flash[:errors] = @comment.errors.messages
+            redirect_to 'show/items/#{params[:id]'
+        end
+
     end
 
     private
@@ -46,11 +49,5 @@ before_action :cart_count
     def set_item
         @item = Item.find(params[:id])
     end
-
-    def post_params
-        params.require(:item).permit(:name, :des, :image_url, :category_id,:price)
-    end
-
-    
 
 end

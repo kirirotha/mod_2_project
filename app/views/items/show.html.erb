@@ -1,38 +1,28 @@
 <h1> <%=@item.name%> </h1>
-<% if @cart_count %>
-    <%= link_to "Cart: #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
-<% end %>
-<br>
-<% if session[:user_id] == nil %>
-    <%= link_to 'Sign Up/Login', login_path%>
-    <% else %>
-    <%= link_to 'My Profile', user_path(session[:user_id]) %>
-    <br>
-    <%= link_to "Logout", logout_path %>
-<% end %>
 <hr> 
 
 <img src=<%=@item.image_url%> alt=<%=@item.name%> style=height:200px;"><br><br>
 Category: <%= @item.category.name %><br><br>
-Price: <%= @item.price.to_s %><br><br>
+Price: $<%= @item.price.to_s %><br><br>
 Description: <%= @item.des %><br><br>
-
 <%= form_for @item, :url => selected_items_path, :html => { :method => :post } do |f|%>
     <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
+    <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
     <%= f.submit 'Add to Cart', class: "btn btn-success" %>
 <% end %>
-<br><br>
 
+<br><br><br>
+<br><br><br>
+<h4>Review</h4>
 <%= form_for @comment, :url => { action: 'create'}, :html => { :method => :post } do |f|%>
-  <%= f.text_field :content %>
-  <%= f.submit %>
+  Title: <%= f.text_field :title %>
+  <br>
+  Stars: <%= f.number_field :rating, value: 1, class: "number-tag", min: 1, max: 5 %>
+  <br>
+  <%= f.text_field :content, placeholder: 'Write Your Review Here!', size: 50 %>
+  <%= f.hidden_field :item_id, value: @comment.item_id %>
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
+  <br>
+  <%= f.submit 'Submit' %>
 <% end %>
-
-<%= link_to 'Leave a Review? Click Here!', new_comment_path %>
-
 <hr>
-
-<%= link_to "Go Back", category_path(@item.category_id) %>
-<br>
-<%= link_to "All Categories", categories_path %>
