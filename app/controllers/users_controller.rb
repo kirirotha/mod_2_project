@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def show
         set_user
-        
+        @order = Order.find_by(user_id: session[:user_id])
     end
 
     def new

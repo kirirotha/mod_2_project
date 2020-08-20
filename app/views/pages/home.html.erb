@@ -1,15 +1,4 @@
-<h1>Website Name</h1>
-<hr>
-<% if session[:user_id] %>
-    <%= "Logged in as #{current_user.username}" %><br>
-    <%= link_to "- Logout? -", logout_path%>
-<% else %>
-    <%= link_to "Click Here to Login ", login_path %><br>
-    or <%= link_to "Create New Account", new_user_path %>
-<% end %>
-<br>
-<br>
-<h3><%= link_to "Browse Items by Category", categories_path %> </h3>
+
 <br>
 
 <h3>Best Selling Items</h3>

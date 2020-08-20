@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+    before_action :all_categories
+
+
     before_action :set_cart
     #helper_method :current_cart
     helper_method :current_user
@@ -20,6 +23,10 @@ class ApplicationController < ActionController::Base
 
 
     private
+
+    def all_categories
+      @categories = Category.all
+    end
     
 
     def set_cart
