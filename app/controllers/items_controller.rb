@@ -10,11 +10,24 @@ before_action :cart_count
 
     def show
         
+        if session[:user_id] == nil
+            redirect_to login_path
+        else
+            @comment = Comment.new
+        end
+        @comment
     end
 
     def new
         @item = Item.new
         @cat = Category.all
+
+        # if session[:user_id] == nil
+        #     redirect_to login_path
+        # else
+        #     @comment = Comment.new(params_comment)
+        # end
+
     end
 
     def create
@@ -25,6 +38,10 @@ before_action :cart_count
     end
 
     private
+
+    # def comment_params
+    #     params.require(:comment).permit(:item_id, :user_id, :title, :content, :rating)
+    # end
 
     def set_item
         @item = Item.find(params[:id])

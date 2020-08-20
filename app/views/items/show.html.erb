@@ -20,8 +20,17 @@ Description: <%= @item.des %><br><br>
 <%= form_for @item, :url => selected_items_path, :html => { :method => :post } do |f|%>
     <%= f.hidden_field :item_id, value: @item.id %>
       <%= f.number_field :quantity, value: 1, class: "number-tag", min: 1 %>
-    <%= f.submit 'Add to Cart', class: "Button" %>
-    <% end %>
+    <%= f.submit 'Add to Cart', class: "btn btn-success" %>
+<% end %>
+<br><br>
+
+<%= form_for @comment, :url => { action: 'create'}, :html => { :method => :post } do |f|%>
+  <%= f.text_field :content %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Leave a Review? Click Here!', new_comment_path %>
+
 <hr>
 
 <%= link_to "Go Back", category_path(@item.category_id) %>
