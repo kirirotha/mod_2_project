@@ -19,8 +19,8 @@ class OrdersController < ApplicationController
         if @order.valid?
         @order.save
         redirect_to order_path(@order)
-        else
         session[:shopping_cart_id] = nil
+        else
         flash[:errors] = @order.errors.messages
         redirect_to new_order_path
         end
