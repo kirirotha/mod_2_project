@@ -5,7 +5,8 @@
 <nav class="navbar navbar-dark sticky-top expand-lg">
     <div class="container">
         
-        <h1> <%= link_to "JOE AND KIRI'S STORE", root_path, class: 'navbar-brand', style: 'font-size: 30px; padding:8px '%> </h1>
+        <%= link_to image_tag("logo_1.png", style: 'height:75px;width:auto;margin-top:0;max-width: 100%;'), root_path, class: 'navbar-brand' %>
+        <h1></h1>
         <div class>
             <ul class="nav navbar-nav mr-auto" >
             <li class='nav-item' style='padding-left: 120px'>
@@ -31,7 +32,7 @@
                     <%= link_to " #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]), style: 'padding-right: 50px ' %></i><br>
                 <% else %>
                 <i class="fas fa-shopping-cart" style='font-size:18px; padding:14px'>
-                <%= link_to " 0 items", shopping_cart_path(session[:shopping_cart_id]), style: 'padding-right: 50px ' %></i><br>                <% end %>
+                <%= link_to " 0 items", shopping_cart_path(session[:shopping_cart_id]), style: 'padding-right: 50px, color: #black' %></i><br>                <% end %>
             </li>
             </ul>
         

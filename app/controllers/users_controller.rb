@@ -9,7 +9,10 @@ class UsersController < ApplicationController
 
     def show
         set_user
-        @order = Order.find_by(user_id: session[:user_id])
+        @orders = Order.select do |order|
+            order.user_id == session[:user_id]
+        end
+
     end
 
     def new

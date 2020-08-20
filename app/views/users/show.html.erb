@@ -1,12 +1,19 @@
+<main id="main">
+<section class="inner-page">
+      <div class="container">
+
+
+
 <h1> Welcome <%= @user.username%>! </h1>
 <hr> 
 Age: <%= @user.age %><br>
 Email Address: <%= @user.email %>
 Password: ********
 <hr>
-<% @order.shopping_cart.selected_items.each do |order|%>
-
-    <%= Item.all.find(order.item_id).name %>
+<% @orders.each do |order|%>
+    <% order.shopping_cart.selected_items.each do |s_item| %>
+        <%= "#{s_item.item.name} - Qty: #{s_item.quantity}" %><br>
+    <% end %>
 <% end %>
 <hr>
 
@@ -17,3 +24,11 @@ Password: ********
 <%= link_to 'Edit My Profile', edit_user_path %>
 <br>
 <%= link_to 'Home', root_path %>
+
+
+
+
+</div>
+</section>
+
+</main>

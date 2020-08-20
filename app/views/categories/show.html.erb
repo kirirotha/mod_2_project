@@ -1,15 +1,11 @@
+<main id="main">
+<section class="inner-page">
+      <div class="container">
+
+
+
 <h1>All Items in <%=@category.name%> </h1>
-<% if @cart_count %>
-    <%= link_to "Cart: #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
-<% end %>
-<br>
-<% if session[:user_id] == nil %>
-    <%= link_to 'Sign Up/Login', login_path%>
-    <% else %>
-    <%= link_to 'My Profile', user_path(session[:user_id]) %>
-    <br>
-    <%= link_to "Logout", logout_path %>
-<% end %>
+
 <hr> 
 
 <%  @category.items.each do |item| %>
@@ -22,3 +18,11 @@
 <% end %>
 <hr>
 <%= link_to "Go Back", categories_path %>
+
+
+
+
+</div>
+</section>
+
+</main>

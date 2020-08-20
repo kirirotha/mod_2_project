@@ -10,11 +10,11 @@ before_action :cart_count
 
     def show
         
-        if session[:user_id] == nil
-            redirect_to login_path
-        else
+        # if session[:user_id] == nil
+        #     redirect_to login_path
+        # else
             @comment = Comment.new
-        end
+        # end
         @comment
     end
 

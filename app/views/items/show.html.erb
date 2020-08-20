@@ -1,20 +1,14 @@
+<main id="main">
+<section class="inner-page">
+      <div class="container">
+
 <h1> <%=@item.name%> </h1>
-<% if @cart_count %>
-    <%= link_to "Cart: #{@cart_count} items", shopping_cart_path(session[:shopping_cart_id]) %><br>
-<% end %>
-<br>
-<% if session[:user_id] == nil %>
-    <%= link_to 'Sign Up/Login', login_path%>
-    <% else %>
-    <%= link_to 'My Profile', user_path(session[:user_id]) %>
-    <br>
-    <%= link_to "Logout", logout_path %>
-<% end %>
+
 <hr> 
 
 <img src=<%=@item.image_url%> alt=<%=@item.name%> style=height:200px;"><br><br>
 Category: <%= @item.category.name %><br><br>
-Price: <%= @item.price.to_s %><br><br>
+Price: <%= number_to_currency(@item.price) %><br><br>
 Description: <%= @item.des %><br><br>
 
 <%= form_for @item, :url => selected_items_path, :html => { :method => :post } do |f|%>
@@ -35,4 +29,13 @@ Description: <%= @item.des %><br><br>
 
 <%= link_to "Go Back", category_path(@item.category_id) %>
 <br>
-<%= link_to "All Categories", categories_path %>
+<%= link_to "Home", root_path %>
+
+
+
+
+    
+      </div>
+    </section>
+
+  </main End ><!--#main -->

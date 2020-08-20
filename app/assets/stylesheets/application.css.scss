@@ -32,7 +32,8 @@ input {
 
 .navbar {
         padding-left: 20px;
-        margin-bottom: 0;
+        padding-bottom: 25px;
+        margin-bottom: 20;
         background: $grey;
         align-items: right;
 }
@@ -89,9 +90,7 @@ caption {
   }
   
   /* Add a red background color to navbar links on hover */
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: white;
-  }
+  
   
   /* Dropdown content (hidden by default) */
   .dropdown-content {

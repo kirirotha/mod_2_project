@@ -18,7 +18,7 @@ class PagesController < ApplicationController
     def best_sellers        
         items_count = Item.all.map do |i|
             item_count = 0
-            Order.all.each do |o|
+            Order.last(20).each do |o|
                  counts = o.shopping_cart.selected_items.select{ |oi| oi.item == i}.count
                 item_count += counts
                  
