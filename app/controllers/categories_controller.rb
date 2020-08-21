@@ -4,7 +4,8 @@ class CategoriesController < ApplicationController
     before_action :cart_count
 
     def index
-        @categories = Category.all
+        categories = Category.all
+        @categories = categories.sort_by{ |c| c[:name]}
     end
 
     def show

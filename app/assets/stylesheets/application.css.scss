@@ -33,7 +33,7 @@ input {
 .navbar {
         padding-left: 20px;
         padding-bottom: 25px;
-        margin-bottom: 20;
+        margin-bottom: 0;
         background: $grey;
         align-items: right;
 }
@@ -54,7 +54,7 @@ a:visited {
 }
 
 .link {
-        color: $white;
+        color: $black;
 }
 .btn-primary {
         color: $white;
@@ -124,10 +124,10 @@ caption {
 
 
   /*--------------------------------------------------------------
-# Sections General
+# Top Items
 --------------------------------------------------------------*/
 section {
-    padding: 60px 0;
+    padding: 10px 0;
     overflow: hidden;
   }
   
@@ -178,13 +178,16 @@ section {
   }
   
 /*--------------------------------------------------------------
-# Services
+# Top Items Boxes
 --------------------------------------------------------------*/
 .services .icon-box {
+    color: #fff;
+    background: #b4b4b4;
+
     text-align: center;
     padding: 80px 20px;
     transition: all ease-in-out 0.3s;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 50);
   }
   
   .services .icon-box .icon {
