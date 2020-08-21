@@ -24,7 +24,8 @@ class ApplicationController < ActionController::Base
     private
 
     def all_categories
-      @categories = Category.all
+      categories = Category.all
+      @categories = categories.sort_by{ |c| c[:name]}
     end
     
 

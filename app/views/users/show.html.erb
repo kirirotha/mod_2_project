@@ -10,9 +10,10 @@ Age: <%= @user.age %><br>
 Email Address: <%= @user.email %>
 Password: ********
 <hr>
+<h3> Past Purchase History: </h3>
 <% @orders.each do |order|%>
     <% order.shopping_cart.selected_items.each do |s_item| %>
-        <%= "#{s_item.item.name} - Qty: #{s_item.quantity}" %><br>
+        <%= link_to s_item.item.name, item_path(s_item.item_id)%><%=" - Qty: #{s_item.quantity}" %><br>
     <% end %>
 <% end %>
 <hr>

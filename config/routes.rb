@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :shopping_carts, only: [:show]
   resources :selected_items, only: [:show, :index, :create, :update, :destroy]
   resources :categories, only: [:index, :new, :show, :create]
-  resources :items, only: [:show, :new, :create]
+  resources :items, only: [:index, :show, :new, :create]
 
 
   get '/login', to: 'auth#login'

@@ -1,13 +1,29 @@
 
 <br>
 
-<h1> *****Put an image or Logo here ****</h1>
-
 <section id="services" class="services">
       <div class="container">
+      <div class="section-title">
+        <h1>NEW ITEMS</h1><br>
+        </div>
+
+        <div class="row">
+            <% @new_items.each do |item| %>
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                    <div class="icon-box">
+                    <img src="<%=item.image_url%>" alt="<%item.name%>" style="height:100px">
+                    <h4><%= link_to item.name, item_path(item) %>
+                    </h4>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+
+
+
 
         <div class="section-title">
-          <span>Most Wanted</span><br>
+          <h1>MOST WANTED</h1><br>
           <p>Our Top 3 Best Sellers:</p>
         </div>
 

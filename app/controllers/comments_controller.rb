@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
     def new
+        @item = Item.find(params[:item_id])
+        @comment = Comment.new
     #     if session[:user_id] == nil
     #         redirect_to login_path
     #     else
@@ -36,4 +38,9 @@ class CommentsController < ApplicationController
     end
 
 
+
+
+    def comment_params
+        params.require(:comment).permit(:item_id, :rating, :title, :content)
+    end
 end

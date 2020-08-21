@@ -1,0 +1,25 @@
+<main id="main">
+<section class="inner-page">
+      <div class="container">
+      <img src=<%=@item.image_url%> alt=<%=@item.name%> style=height:200px;"><br><br>
+
+      <h1> @item.name </h1>
+
+      <%= form_for @comment do |f|%>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.text_field :rating %>
+        <%= f.text_field :title %>
+        <%= f.text_area :title %>
+
+        <%= f.submit 'Submit comment' %>
+    <% end %>
+    
+
+
+
+
+
+    </div>
+</section>
+
+</main End >
