@@ -16,6 +16,12 @@ Description: <%= @item.des %><br><br>
 <% end %>
 
 <br><br><br>
+<h3>Comments: </h3>
+  <% @item_comments.each do |comment| %>
+    <h4><%= comment.title %> </h4
+    Rating: <%= comment.rating %>
+    <%= comment.content %>
+  <% end %>
 <br><br><br>
 <h4>Review</h4>
 <%= form_for @comment, :url => { action: 'create'}, :html => { :method => :post } do |f|%>
@@ -29,29 +35,6 @@ Description: <%= @item.des %><br><br>
   <br>
   <%= f.submit 'Submit' %>
 <% end %>
-<<<<<<< HEAD
-
-<%= link_to 'Leave a Review? Click Here!', new_comment_path %>
-
 <hr>
 
-<%= link_to "Go Back", category_path(@item.category_id) %>
-<br>
-<%= link_to "Home", root_path %>
 
-
-
-
-    
-      </div>
-    </section>
-
-  </main End ><!--#main -->
-=======
-<hr>
->>>>>>> 6beedf9d4403241f1e4743a2bcaeb403a791daea
-
-
-<%= hidden_field_tag :id, value: @item.id %>
-
-<%= link_to "Add Comment/Review", new_comment_path %>

@@ -10,6 +10,7 @@ before_action :cart_count
 
     def show
         @comment = Comment.new
+        @item_comments = item_comments
     end
 
     def new
@@ -56,6 +57,13 @@ before_action :cart_count
 
     def set_item
         @item = Item.find(params[:id])
+    end
+
+    def item_comments
+        item_comments = Comment.all.select do |c|
+            @item.id == c.item_id
+
+        end
     end
 
 end
