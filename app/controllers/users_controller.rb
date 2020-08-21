@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only:[:show, :edit, :update, :destroy]
+    before_action :set_user, only:[:show, :create, :edit, :update, :destroy]
     before_action :set_cart
 
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     end
 
     def update 
-        @user = User.new(post_params)
+        @user = User.find_by(params[:id])
         if @user.valid?
             @user.save
             redirect_to user_path(@user)

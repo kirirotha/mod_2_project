@@ -18,35 +18,23 @@ Description: <%= @item.des %><br><br>
 <br><br><br>
 <br><br><br>
 <h4>Review</h4>
-<%= form_for @comment, :url => { action: 'create'}, :html => { :method => :post } do |f|%>
-  Title: <%= f.text_field :title %>
-  <br>
-  Stars: <%= f.number_field :rating, value: 1, class: "number-tag", min: 1, max: 5 %>
-  <br>
-  <%= f.text_field :content, placeholder: 'Write Your Review Here!', size: 50 %>
-  <%= f.hidden_field :item_id, value: @comment.item_id %>
-  <%= f.hidden_field :user_id, value: session[:user_id] %>
-  <br>
-  <%= f.submit 'Submit' %>
+
+<% if flash[:errors] %>
+    <% flash[:errors].keys.each do |key| %>
+        <h4 style="color:red;"> error:<%= "#{key} #{flash[:errors][key][0]}" %></h4>
+    <% end %>
 <% end %>
-<<<<<<< HEAD
 
-<%= link_to 'Leave a Review? Click Here!', new_comment_path %>
+<%= form_for @comment, :url => { :controller => :comments, :action => "create" }, :html => {:method => :post} do |f| %>
+	<%= f.label 'Title:' %>
+	<%= f.text_field :title %>
+  <br>
+  <%= f.label 'Stars:' %>
+  <%= f.number_field :rating, value: 1, class: "number-tag", min: 1, max: 5 %>
+  <br>
+	<%= f.text_field :content, placeholder: 'Tell Us Why You Like/Dislike It!', size: 50 %>
+  <br>
+	<%= f.submit 'Submit'%>
+<% end %>
 
 <hr>
-
-<%= link_to "Go Back", category_path(@item.category_id) %>
-<br>
-<%= link_to "Home", root_path %>
-
-
-
-
-    
-      </div>
-    </section>
-
-  </main End ><!--#main -->
-=======
-<hr>
->>>>>>> 6beedf9d4403241f1e4743a2bcaeb403a791daea

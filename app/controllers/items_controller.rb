@@ -26,17 +26,17 @@ before_action :cart_count
         # @item.save
         # redirect_to item_path(@item)
         #@item = Item.find(params[:id])
-        @comment = Comment.new
-        if session[:user_id] == nil
-            redirect_to login_path
-        elsif @comment.valid?
-            @comment = Comment.create(content: params[:comment][:title][:content][:rating], item_id: params[:id])
-            redirect_to 'items/#{params[:id]}'
-        else
-            byebug
-            flash[:errors] = @comment.errors.messages
-            redirect_to 'show/items/#{params[:id]'
-        end
+        # @comment = Comment.new(comment_params)
+        # if session[:user_id] == nil
+        #     redirect_to login_path
+        # else @comment.valid?
+        #     @comment.save
+        #     redirect_to 'items/#{params[:id]}'
+        # end
+        # else
+        #     flash[:errors] = @comment.errors.messages
+        #     redirect_to 'show/items/#{params[:id]'
+        # end
 
     end
 
@@ -47,6 +47,7 @@ before_action :cart_count
     # end
 
     def set_item
+        
         @item = Item.find(params[:id])
     end
 

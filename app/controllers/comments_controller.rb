@@ -11,13 +11,29 @@ class CommentsController < ApplicationController
     end
 
     def create
-       
+        @comment = Comment.create(comment_params)
+
+        if params[:comments][:content] != nil
+            @comment.save
+        end
+        
+        # if session[:user_id] == nil
+        #     redirect_to login_path
+        # elsif @comment.valid?
+        #     @comment.save
+        #     redirect_to 'items/#{params[:id]'
+        # else
+        #     flash[:errors] = @comment.errors.messages
+        #     redirect_to 'show/items/#{params[:id]'
+        # end
+        
     end
 
-    # private
+    private
 
-    # def params_comment
-    #     params.require(:comment).permit(:name)
-    # end
+    def comment_params
+        params.require(:comment).permit(:item_id, :user_id, :title, :content, :rating)
+    end
+
 
 end
